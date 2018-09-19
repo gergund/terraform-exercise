@@ -3,3 +3,4 @@
 */terraform.tfstate*
 */out.terraform
 */mykey*
+*/output.tf
