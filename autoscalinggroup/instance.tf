@@ -10,6 +10,11 @@ resource "aws_instance" "bastion" {
 
   # the public SSH key
   key_name = "${aws_key_pair.mykeypair.key_name}"
+
+  tags {
+     Name = "bastion"
+  }
+
 }
 
 
