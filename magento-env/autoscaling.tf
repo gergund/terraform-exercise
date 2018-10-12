@@ -1,14 +1,14 @@
 resource "aws_launch_configuration" "launchconfig" {
   name_prefix          = "launchconfig"
-  image_id             = "ami-00035f41c82244dab"
+  image_id             = "ami-072ce1ddf3186597c"
   instance_type        = "t2.micro"
   key_name             = "${aws_key_pair.mykeypair.key_name}"
   security_groups      = ["${aws_security_group.SG-Web.id}"]
-
+  
   lifecycle { 
 	create_before_destroy = true 
   }
-
+  
 }
 
 resource "aws_autoscaling_group" "autoscaling" {
@@ -22,10 +22,6 @@ resource "aws_autoscaling_group" "autoscaling" {
   health_check_type = "ELB"
   load_balancers = ["${aws_elb.my-elb.name}"]
   force_delete = true
-
-  lifecycle {
-    create_before_destroy = true
-  }
 
   tag {
       key = "Name"
